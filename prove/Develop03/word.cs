@@ -23,6 +23,7 @@ class Word
         Console.Write($"{GetWordString()} ");   
     }
 
+    //Replaces the a hidden word with "_" 
     public string GetWordString()
     {
         string returnString = "";
