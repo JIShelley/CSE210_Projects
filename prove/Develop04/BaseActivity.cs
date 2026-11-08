@@ -10,19 +10,17 @@ class BaseActivity
         _description = description;
     }
 
-    public void RunCountdownMessage(string message, int seconds)
+   public void RunCountdownMessage(string message, int seconds)
     {
         Console.CursorVisible = false;
         for (int i = seconds; i >= 1; i--)
         {
-            Console.Clear();
-            Console.Write($"{message} {i}");
+            Console.Write($"\r{message} {i} ");
             Thread.Sleep(1000);
-        }  
+        }
         Console.Clear();
         Console.CursorVisible = true;
     }
-
     public void DisplayCountdownAnimation(string message, int seconds)
     {
         Console.CursorVisible = false;
@@ -69,8 +67,9 @@ class BaseActivity
     public void DisplayEndingMessage()
     {
         Console.Clear();
-        Console.WriteLine("Well done!");
-        Console.WriteLine($"You have spent {_duration} seconds of the {_name} activity.");
+        Console.WriteLine("Well done!\n");
+        Thread.Sleep(1000);
+        Console.WriteLine($"You have spent {_duration} seconds in the {_name} activity.");
         Console.WriteLine("Press any key to return to the main menu...");
         Console.ReadKey();
     }
