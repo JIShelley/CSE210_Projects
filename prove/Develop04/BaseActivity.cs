@@ -1,5 +1,15 @@
 class BaseActivity
 {   
+    protected string _name;
+    protected string _description;
+    protected int _duration;
+
+    public BaseActivity(string name, string description)
+    {
+        _name = name;
+        _description = description;
+    }
+
     public void RunCountdownMessage(string message, int seconds)
     {
         Console.CursorVisible = false;
@@ -36,33 +46,31 @@ class BaseActivity
 
     }
 
-    public int ObtainDuration()
+    public void ObtainDuration()
     {
         Console.Write("Enter the duration of the activity in seconds: ");
         string input = Console.ReadLine();
-        int duration;
-        while (!int.TryParse(input, out duration) || duration <= 0)
+        while (!int.TryParse(input, out _duration) || _duration <= 0)
         {
             Console.WriteLine("Invalid input. Please enter a positive integer.");
             Console.Write("Enter the duration of the activity in seconds: ");
             input = Console.ReadLine();
         }
-        return duration;   
     }
 
-    public void DisplayStartingMessage(string name, string description)
+    public void DisplayStartingMessage()
     {
         Console.Clear();
-        Console.WriteLine($"Welcome to the {name} Activity!\n");
-        Console.WriteLine(description);
+        Console.WriteLine($"Welcome to the {_name} Activity!\n");
+        Console.WriteLine(_description);
         Console.WriteLine();
     }
 
-    public void DisplayEndingMessage(string name, int duration)
+    public void DisplayEndingMessage()
     {
         Console.Clear();
-        Console.WriteLine($"Well done!");
-        Console.WriteLine($"You have spent {duration} seconds of the {name} activity.");
+        Console.WriteLine("Well done!");
+        Console.WriteLine($"You have spent {_duration} seconds of the {_name} activity.");
         Console.WriteLine("Press any key to return to the main menu...");
         Console.ReadKey();
     }

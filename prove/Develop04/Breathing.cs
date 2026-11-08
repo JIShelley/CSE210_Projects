@@ -1,15 +1,14 @@
 class BreathingActivity : BaseActivity
 {
-    public BreathingActivity()
+    public BreathingActivity() : base("Breathing", "This activity will help you relax by guiding you through slow breathing. Clear your mind and focus on your breathing.")
     {
-
     }
 
     public void RunBreathingActivity()
     {
-        DisplayStartingMessage("Breathing", "This activity will help you relax by guiding you through slow breathing. Clear your mind and focus on your breathing.");
-        int duration = ObtainDuration();
-        DateTime endTime = DateTime.Now.AddSeconds(duration);
+        DisplayStartingMessage();
+        ObtainDuration();
+        DateTime endTime = DateTime.Now.AddSeconds(_duration);
 
         DisplayCountdownAnimation("Get Ready", 5);
 
@@ -19,6 +18,6 @@ class BreathingActivity : BaseActivity
             RunCountdownMessage("Breathe out...", 6);
         }
 
-        DisplayEndingMessage("Breathing", duration);
+        DisplayEndingMessage();
     }
 }
