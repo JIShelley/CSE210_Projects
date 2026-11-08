@@ -5,11 +5,12 @@ class Program
     static void Main(string[] args)
     {
         Menu menu = new Menu();
-        int choice = menu.DisplayMenu();
         bool isRunning = true;
 
         while (isRunning)
         {
+            int choice = menu.DisplayMenu();
+
             switch (choice)
             {
                 case 1:
