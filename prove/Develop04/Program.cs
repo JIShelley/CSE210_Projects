@@ -19,11 +19,11 @@ class Program
                     break;
                 case 2:
                     Reflection reflectionActivity = new Reflection();
-                    reflectionActivity.RunActivity();
+                    reflectionActivity.RunReflectionActivity();
                     break;
                 case 3:
-                    // ListingActivity listingActivity = new ListingActivity("Listing Activity", "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.");
-                    // listingActivity.RunListingActivity();
+                    ListingActivity listingActivity = new ListingActivity();
+                    listingActivity.RunListingActivity();
                     break;
                 case 4:
                     Console.WriteLine("Thank you for using the program. Goodbye!");

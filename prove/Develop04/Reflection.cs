@@ -30,7 +30,7 @@ public Reflection()
         };
     }
     
-public void RunActivity()
+public void RunReflectionActivity()
     {
         DisplayStartingMessage();
         ObtainDuration();
