@@ -8,10 +8,10 @@ class BreathingActivity : BaseActivity
     {
         DisplayStartingMessage();
         ObtainDuration();
-        DateTime endTime = DateTime.Now.AddSeconds(_duration);
 
         DisplayCountdownAnimation("Get Ready", 5);
 
+        DateTime endTime = DateTime.Now.AddSeconds(_duration);
         while (DateTime.Now < endTime)
         {
             RunCountdownMessage("Breathe in...", 4);

@@ -34,7 +34,6 @@ public void RunReflectionActivity()
     {
         DisplayStartingMessage();
         ObtainDuration();
-        DateTime endTime = DateTime.Now.AddSeconds(_duration);
 
         DisplayCountdownAnimation("Get Ready", 5);
         DisplayRandomPrompt();
@@ -42,8 +41,11 @@ public void RunReflectionActivity()
         Console.WriteLine("When you have something in mind, press enter to continue.");
         Console.ReadLine();
         Console.WriteLine("Now ponder on each of the following questions as they relate to this experience.");
+        Thread.Sleep(3000);
+
         RunCountdownMessage("You may begin in", 5);
 
+        DateTime endTime = DateTime.Now.AddSeconds(_duration);
         while (DateTime.Now < endTime)
         {
             DisplayRandomQuestion();
