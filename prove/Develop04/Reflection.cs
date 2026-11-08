@@ -5,27 +5,68 @@ class Reflection : BaseActivity
 
     public Reflection()
     {
-        
+        _prompts = new List<string>();
+        _questions = new List<string>();
     }
     
     public void RunActivity()
     {
-        DisplayStartingMessage("Reflection Activity", "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.");
+        DisplayStartingMessage("Reflection", "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.");
+
         int duration = ObtainDuration();
         DateTime endTime = DateTime.Now.AddSeconds(duration);
 
+        DisplayCountdownAnimation("Get Ready", 5);
+
+        DisplayRandomPrompt();
+
+        Console.WriteLine("When you have something in mind, press enter to continue.");
+        Console.ReadLine();
+        Console.Write("Now ponder on each of the following questions as they relate to this experience.");
+        RunCountdownMessage("You may begin in", 5);
+
         while (DateTime.Now < endTime)
         {
-            // Implementation for the reflection activity
+            DisplayRandomQuestion();
+            
         }
 
-        DisplayEndingMessage("Reflection Activity", duration);
+        DisplayEndingMessage("Reflection", duration);
     }
 
-    private void SetPromptsAndQuestions()
+    private void DisplayRandomPrompt()
     {
-        
+        Random random = new Random();
+        _prompts.AddRange(new string[] {
+            "Think of a time when you overcame a significant challenge.",
+            "Recall a moment when you achieved something you thought was impossible.",
+            "Reflect on a situation where you demonstrated resilience in the face of adversity.",
+            "Remember a time when you helped someone in need and made a positive impact.",
+            "Think about an experience that taught you an important life lesson."
+        });
+
+        int index = random.Next(_prompts.Count);
+        Console.WriteLine("\nConsider the following prompt:\n");
+        Console.WriteLine($"--- {_prompts[index]} ---\n");
     }
 
-    
+    private void DisplayRandomQuestion()
+    {
+        Random random = new Random();
+        _questions.AddRange(new string[] {
+            "Why was this experience meaningful to you?",
+            "What did you learn about yourself from this experience?", 
+            "Have you ever done anything like this before?",
+            "How can you apply what you learned from this experience in the future?",
+            "What strengths did you demonstrate during this experience?",
+            "How did this experience change your perspective or beliefs?",
+            "What challenges did you face during this experience and how did you overcome them?",
+            "What would you do differently if you could go back and do this experience again?",
+            "How did this experience impact your relationships with others?"
+        });
+
+        int index = random.Next(_questions.Count);
+        DisplayCountdownAnimation($"{_questions[index]}", 10);
+    }
+
 }
