@@ -39,8 +39,8 @@ class BaseActivity
                 Thread.Sleep(300);
             }
         }
-        
         Console.Clear();
+        Console.CursorVisible = true;
 
     }
 
@@ -71,6 +71,7 @@ class BaseActivity
         Thread.Sleep(1000);
         Console.WriteLine($"You have spent {_duration} seconds in the {_name} activity.");
         Console.WriteLine("Press any key to return to the main menu...");
+        while (Console.KeyAvailable) { Console.ReadKey(true); }
         Console.ReadKey();
     }
 }

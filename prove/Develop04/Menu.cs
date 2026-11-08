@@ -9,7 +9,12 @@ class Menu
         Console.WriteLine("3. Start Listing Activity");
         Console.WriteLine("4. Quit");
         Console.Write("Select a choice from the menu: ");
-        int choice = int.Parse(Console.ReadLine());
+
+        int choice;
+        if (!int.TryParse(Console.ReadLine(), out choice))
+        {
+            choice = 0;
+        }
         return choice;
 
     }
