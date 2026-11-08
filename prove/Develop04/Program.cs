@@ -31,6 +31,7 @@ class Program
                     break;
                 default:
                     Console.WriteLine("Invalid choice. Please select a valid option.");
+                    Thread.Sleep(2000);
                     break;
             }
         }
