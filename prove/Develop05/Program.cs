@@ -4,9 +4,15 @@ class Program
 {
     static void Main(string[] args)
     {
-        SimpleGoal mySimpleGoal = new SimpleGoal();
-        Console.WriteLine(mySimpleGoal.GetConsoleString());
-        mySimpleGoal.RecordEvent();
-        Console.WriteLine(mySimpleGoal.GetConsoleString());
+        // mySimpleGoal.RecordEvent();
+        // Console.WriteLine(mySimpleGoal.GetConsoleString());
+        Console.Clear();
+
+        Goal myGoal = new Goal();
+        Menu myMenu = new Menu();
+        
+        myGoal.DisplayScore();
+        Console.WriteLine();
+        myMenu.RunMainMenu();
     }
 }

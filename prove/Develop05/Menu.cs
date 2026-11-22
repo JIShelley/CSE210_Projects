@@ -1,34 +1,85 @@
 class Menu
 {
-    public int DisplayMainMenu()
+    public void RunMainMenu()
     {
+        bool isRunning = true;
+
         Console.WriteLine("Menu Options");
-        Console.WriteLine("");
-        Console.WriteLine("");
-        Console.WriteLine("");
+        Console.WriteLine("1. Create New Goal");
+        Console.WriteLine("2. List Goals");
+        Console.WriteLine("3. Save Goals");
+        Console.WriteLine("4. Load Goals");
+        Console.WriteLine("5. Record Event");
+        Console.WriteLine("6. Quit");
         Console.Write("Select a choice from the menu: ");
-
-        int choice;
-        if (!int.TryParse(Console.ReadLine(), out choice))
+        int choice = int.Parse(Console.ReadLine());
+        
+        while (isRunning)
         {
-            choice = 0;
+            switch (choice)
+            {
+                case 1:
+                    RunSubMenu();
+                    break;
+                case 2:
+                    // List Goals
+                    break;
+                case 3:
+                    // Save Goals
+                    break;
+                case 4:
+                    // Load Goals
+                    break;
+                case 5:
+                    // Record Event
+                    break;
+                case 6:
+                    Console.WriteLine("Thank you for using the program. Goodbye!");
+                    isRunning = false;
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice. Please select a valid option.");
+                    break;
+            }
         }
-        return choice;
     }
-
-    public int DisplaySubMenu()
+    public void RunSubMenu()
     {
-        Console.WriteLine("What king of goal would you like to make?");
-        Console.WriteLine("Simple Goal");
-        Console.WriteLine("Eternal Goal");
-        Console.WriteLine("Checklist Goal");
-        Console.Write("Select a choice from the menu: ");
+        bool isRunning = true;
 
-        int choice;
-        if (!int.TryParse(Console.ReadLine(), out choice))
+
+        Console.Clear();
+        Console.WriteLine("What kind of goal would you like to make?");
+        Console.WriteLine("1. Simple Goal");
+        Console.WriteLine("2. Eternal Goal");
+        Console.WriteLine("3. Checklist Goal");
+        Console.WriteLine("4. Return to Main Menu");
+        Console.Write("Select a choice from the menu: ");
+        int choice = int.Parse(Console.ReadLine());
+
+        while (isRunning)
         {
-            choice = 0;
-        }
-        return choice; 
+            switch (choice)
+            {
+                case 1:
+                    SimpleGoal mySimpleGoal = new SimpleGoal();
+                    Console.WriteLine(mySimpleGoal.GetConsoleString());
+                    break;
+                case 2:
+                    
+                    break;
+                case 3:
+                    
+                    break;
+                case 4:
+                    Console.Clear();
+                    isRunning = false;
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice. Please select a valid option.");
+                    Thread.Sleep(2000);
+                    break;
+            }
+        } 
     }
 }

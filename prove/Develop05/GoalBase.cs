@@ -40,7 +40,7 @@ abstract class BaseGoal
         Console.WriteLine("Please enter how many points your goal is worth: ");
         _points = int.Parse(Console.ReadLine());
     }
-    public virtual string GetConsoleString()
+    public virtual string GetConsoleString() //Marks the goal as complete with an X and returns the goal information as a string
     {
         string completeString = " ";
         if (_complete)
@@ -51,7 +51,7 @@ abstract class BaseGoal
         return $"[{completeString}] - {_goalType}, Goal Name: {_name}, Description: {_description}, Points: {_points}";
     }
 
-    public int MarkComplete()
+    public int MarkComplete() // Mark the goal as complete and return the points earned
     {
         _complete = true;
         return _points;

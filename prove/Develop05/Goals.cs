@@ -30,7 +30,7 @@ class Goal
 
     public void DisplayScore()
     {
-        
+        Console.WriteLine($"You have {_totalScore} points.");
     }
 
     public void RecordEvent()
