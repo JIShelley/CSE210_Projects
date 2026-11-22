@@ -1,37 +1,42 @@
 class Menu
 {
+    Goal myGoal = new Goal();
     public void RunMainMenu()
     {
         bool isRunning = true;
-
-        Console.WriteLine("Menu Options");
-        Console.WriteLine("1. Create New Goal");
-        Console.WriteLine("2. List Goals");
-        Console.WriteLine("3. Save Goals");
-        Console.WriteLine("4. Load Goals");
-        Console.WriteLine("5. Record Event");
-        Console.WriteLine("6. Quit");
-        Console.Write("Select a choice from the menu: ");
-        int choice = int.Parse(Console.ReadLine());
         
         while (isRunning)
         {
+            Console.WriteLine();
+            myGoal.DisplayScore();
+            Console.WriteLine();
+            Console.WriteLine("Menu Options");
+            Console.WriteLine("1. Create New Goal");
+            Console.WriteLine("2. List Goals");
+            Console.WriteLine("3. Save Goals");
+            Console.WriteLine("4. Load Goals");
+            Console.WriteLine("5. Record Event");
+            Console.WriteLine("6. Quit");
+            Console.Write("Select a choice from the menu: ");
+            int choice = int.Parse(Console.ReadLine());
+            Console.WriteLine();
+
             switch (choice)
             {
                 case 1:
                     RunSubMenu();
                     break;
                 case 2:
-                    // List Goals
+                    myGoal.DisplayGoals();
                     break;
                 case 3:
-                    // Save Goals
+                    myGoal.SaveGoals();
                     break;
                 case 4:
-                    // Load Goals
+                    myGoal.LoadGoals();
                     break;
                 case 5:
-                    // Record Event
+                    myGoal.RecordEvent();
                     break;
                 case 6:
                     Console.WriteLine("Thank you for using the program. Goodbye!");
@@ -46,8 +51,9 @@ class Menu
     public void RunSubMenu()
     {
         bool isRunning = true;
-
-
+        while (isRunning)
+        {
+            
         Console.Clear();
         Console.WriteLine("What kind of goal would you like to make?");
         Console.WriteLine("1. Simple Goal");
@@ -57,19 +63,22 @@ class Menu
         Console.Write("Select a choice from the menu: ");
         int choice = int.Parse(Console.ReadLine());
 
-        while (isRunning)
-        {
             switch (choice)
             {
                 case 1:
                     SimpleGoal mySimpleGoal = new SimpleGoal();
-                    Console.WriteLine(mySimpleGoal.GetConsoleString());
+                    myGoal.AddGoal(mySimpleGoal);
+                    isRunning = false;
                     break;
                 case 2:
-                    
+                    EternalGoal myEternalGoal = new EternalGoal();
+                    myGoal.AddGoal(myEternalGoal);
+                    isRunning = false;
                     break;
                 case 3:
-                    
+                    ChecklistGoal myChecklistGoal = new ChecklistGoal();
+                    myGoal.AddGoal(myChecklistGoal);
+                    isRunning = false;
                     break;
                 case 4:
                     Console.Clear();

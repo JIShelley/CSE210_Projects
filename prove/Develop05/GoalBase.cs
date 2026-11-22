@@ -2,9 +2,10 @@ abstract class BaseGoal
 {
     private string _name;
     private string _description;
-    private int _points;
+    protected int _points;
     private bool _complete;
     private string _goalType;
+
     public BaseGoal(string name, string description, int points, bool complete, string goalType)
     {
         _name = name;
@@ -16,11 +17,12 @@ abstract class BaseGoal
 
     public BaseGoal(string goalType)
     {   
+        Goal myGoal = new Goal();
         SetGoalName();
         SetGoalDescription();
         SetGoalPoints();
         _complete = false;
-        _goalType = base.ToString();
+        _goalType = goalType;
     }
 
     public void SetGoalName()
@@ -37,10 +39,10 @@ abstract class BaseGoal
 
     public void SetGoalPoints()
     {
-        Console.WriteLine("Please enter how many points your goal is worth: ");
+        Console.Write("Please enter how many points your goal is worth: ");
         _points = int.Parse(Console.ReadLine());
     }
-    public virtual string GetConsoleString() //Marks the goal as complete with an X and returns the goal information as a string
+    public virtual string GetConsoleString() //Prints the goal and marks with X if completed
     {
         string completeString = " ";
         if (_complete)
@@ -48,11 +50,18 @@ abstract class BaseGoal
             completeString = "X";
         }
 
-        return $"[{completeString}] - {_goalType}, Goal Name: {_name}, Description: {_description}, Points: {_points}";
+        return $"[{completeString}] - {_name}, ({_description}) Points: {_points}";
     }
 
+    public virtual string GetFileString() //Returns the goal information as a string for saving to a file
+    {
+        return $"{_goalType};{_name};{_description};{_points};{_complete}";
+    }
     public int MarkComplete() // Mark the goal as complete and return the points earned
     {
+        if (_complete)
+            return 0;
+        
         _complete = true;
         return _points;
     }

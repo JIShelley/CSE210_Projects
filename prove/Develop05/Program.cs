@@ -6,13 +6,9 @@ class Program
     {
         // mySimpleGoal.RecordEvent();
         // Console.WriteLine(mySimpleGoal.GetConsoleString());
-        Console.Clear();
 
-        Goal myGoal = new Goal();
+        Console.Clear();
         Menu myMenu = new Menu();
-        
-        myGoal.DisplayScore();
-        Console.WriteLine();
         myMenu.RunMainMenu();
     }
 }
